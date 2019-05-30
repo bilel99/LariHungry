@@ -1,0 +1,434 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+
+// Izitoast
+@import '../../../node_modules/izitoast/dist/css/iziToast.min.css';
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #5a5a5a;
+}
+
+a {
+  cursor: pointer;
+}
+
+.main {
+  margin-top: 100px; /* Debut de page après navbar */
+}
+
+/* Dashboard
+-------------------- */
+.ds-btn li {
+  list-style: none;
+  float: left;
+  padding: 10px;
+}
+
+.ds-btn li a span {
+  padding-left: 15px;
+  padding-right: 5px;
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+}
+
+.ds-btn li a span small {
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+}
+
+/* FA Icons
+------------------------- */
+.icon-reader {
+  color: #2980b9;
+}
+
+.icon-edit {
+  color: #27ae60;
+}
+
+.icon-trash {
+  color: #e74c3c;
+}
+
+/* BTN Admin Inline
+------------------------- */
+.form-delete {
+  display: inline-block;
+}
+
+.form-edit {
+  display: inline-block;
+}
+
+.btn-show {
+  display: inline-block;
+  color: #27ae60;
+}
+
+.btn-edit {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  color: #0066CC;
+}
+
+.btn-edit-float-right {
+  margin-left: 300px;
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  color: #0066CC;
+}
+
+.btn-delete {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  color: #e74c3c;
+}
+
+.btn-submit {
+  border: none;
+  background-color: transparent;
+}
+
+/* Panel With tab bootstrap
+------------------------- */
+.b-tab {
+  padding: 10%;
+  margin-top: -8%;
+}
+.b-tab #tabs{
+  background: #007b5e;
+  color: #eee;
+}
+.b-tab #tabs h6.section-title{
+  color: #eee;
+}
+.b-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #0062cc;
+  background-color: transparent;
+  border-color: transparent transparent #f3f3f3;
+  border-bottom: 3px solid !important;
+  font-size: 16px;
+  font-weight: bold;
+}
+.b-tab .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  color: #0062cc;
+  font-size: 16px;
+  font-weight: 600;
+}
+.b-tab .nav-link:hover {
+  border: none;
+}
+.b-tab thead{
+  background: #f3f3f3;
+  color: #333;
+}
+.b-tab a{
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+/* SideBar
+------------------------- */
+.custom-sidebar {
+  position: fixed;
+  z-index: 10;
+}
+
+.list-group {
+  margin: auto;
+  float: left;
+  padding-top: 20px;
+}
+
+.lead {
+  margin: auto;
+  left: 0;
+  right: 0;
+  padding-top: 10%;
+}
+
+/* Floating button + Label
+--------------------------*/
+.label-container {
+  position: fixed;
+  bottom: 48px;
+  right: 105px;
+  display: table;
+  visibility: hidden;
+  z-index: 10;
+}
+
+.label-text {
+  color: #FFF;
+  background: rgba(51, 51, 51, 0.5);
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.label-arrow {
+  display: table-cell;
+  vertical-align: middle;
+  color: #333;
+  opacity: 0.5;
+  z-index: 10;
+}
+
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #06C;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 10;
+}
+
+.my-float {
+  font-size: 24px;
+  margin-top: 18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Footer
+------------------------- */
+section {
+  padding: 60px 0;
+}
+
+section .section-title {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+#footer {
+  background: #343A40;
+}
+
+#footer a {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+
+/******************************
+Responsive
+
+[Table of Contents]
+
+1. 1600px
+2. 1440px
+3. 1280px
+4. 1199px
+5. 1024px
+6. 991px
+7. 959px
+8. 880px
+9. 768px
+10. 767px
+11. 539px
+12. 479px
+13. 400px
+
+******************************/
+
+/************
+1. 1600px
+************/
+
+@media only screen and (max-width: 1600px)
+{
+
+}
+
+/************
+2. 1440px
+************/
+
+@media only screen and (max-width: 1440px)
+{
+
+}
+
+/************
+3. 1380px
+************/
+
+@media only screen and (max-width: 1380px)
+{
+
+}
+
+/************
+3. 1280px
+************/
+
+@media only screen and (max-width: 1280px)
+{
+
+}
+
+/************
+4. 1199px
+************/
+
+@media only screen and (max-width: 1199px)
+{
+
+}
+
+/************
+4. 1100px
+************/
+
+@media only screen and (max-width: 1100px)
+{
+
+}
+
+/************
+5. 1024px
+************/
+
+@media only screen and (max-width: 1024px)
+{
+
+}
+
+/************
+6. 991px
+************/
+
+@media only screen and (max-width: 991px)
+{
+  .listing_location a
+  {
+    max-width: 100%;
+  }
+}
+
+/************
+7. 959px
+************/
+
+@media only screen and (max-width: 959px)
+{
+
+}
+
+/************
+8. 880px
+************/
+
+@media only screen and (max-width: 880px)
+{
+
+}
+
+/************
+9. 768px
+************/
+
+@media only screen and (max-width: 768px)
+{
+
+}
+
+/************
+10. 767px
+************/
+
+@media only screen and (max-width: 767px)
+{
+
+}
+
+/************
+11. 575px
+************/
+
+@media only screen and (max-width: 575px)
+{
+
+}
+
+/************
+11. 539px
+************/
+
+@media only screen and (max-width: 539px)
+{
+
+}
+
+/************
+12. 480px
+************/
+
+@media only screen and (max-width: 480px)
+{
+
+}
+
+/************
+13. 479px
+************/
+
+@media only screen and (max-width: 479px)
+{
+
+}
+
+/************
+14. 400px
+************/
+
+@media only screen and (max-width: 400px)
+{
+
+}
