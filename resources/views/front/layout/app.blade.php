@@ -16,10 +16,15 @@
           crossorigin="anonymous">
     <!-- Izitoast -->
     <script src="{{ asset('plugins/izitoast/iziToast.min.js') }}"></script>
+    <!-- OWL Carousel -->
+    <link rel="stylesheet" href="{{ asset('plugins/owl-carousel/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/owl-carousel/owl.carousel.min.css') }}">
     <!-- Styles -->
     <link href="{{ mix('/front/css/app.css') }}" rel="stylesheet">
     <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" async defer></script>
     <script src="{{ mix('/front/js/app.js') }}" async defer></script>
+    <!-- Select2 -->
     <link href="{{ asset('plugins/select2/select2.min.css') }}" rel="stylesheet"/>
 
 </head>
@@ -39,6 +44,8 @@
 
 <script src="{{ asset('plugins/jquery.min.js') }}"></script>
 <script src="{{ asset('plugins/select2/select2.min.js') }}"></script>
+<script src="{{ asset('plugins/owl-carousel/owl.carousel.min.js') }}"></script>
+
 <script>
     /**
      * Select2 plugins

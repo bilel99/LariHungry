@@ -31,6 +31,16 @@
                     <li class="list-inline-item"><a href=""><i class="fab fa-google-plus fa-2x"></i></a></li>
                     <li class="list-inline-item"><a href="" target="_blank"><i class="far fa-envelope fa-2x"></i></a></li>
                 </ul>
+
+                <h5>Newsletter</h5>
+                <form method="POST" action="{{ route('front.create.newsletter') }}">
+                    @csrf
+                    @method('POST')
+                    <div class="form-group">
+                        <label for="newsletter">click to enter by submit form</label>
+                        <input type="text" class="form-control" name="newsletter" placeholder="john.doe@domain.com">
+                    </div>
+                </form>
             </div>
         </div>
         <div class="row">

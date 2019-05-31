@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -36823,8 +36823,13 @@ module.exports = function(module) {
 /*!***********************************!*\
   !*** ./resources/js/admin/app.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
+
 
 __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
 
@@ -36851,9 +36856,12 @@ $(document).ready(function () {
    * edit category / {id}
    */
 
-  toggleEditCategory(); // AJAX Request
+  toggleEditCategory();
+  /**
+   * Ajax Get Ville
+   */
 
-  getVille();
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["getVille"])();
 });
 /**
  * Page = Admin, Dashboard
@@ -36932,12 +36940,23 @@ var toggleEditCategory = function toggleEditCategory() {
     $('.category_title_' + id).attr('name', 'category_title_' + id);
   });
 };
+
+/***/ }),
+
+/***/ "./resources/js/app.js":
+/*!*****************************!*\
+  !*** ./resources/js/app.js ***!
+  \*****************************/
+/*! exports provided: getVille */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getVille", function() { return getVille; });
 /**
  *  Ajax
  */
-
-
-var getVille = function getVille() {
+function getVille() {
   // if selector cp exist
   if ($('#cp').length !== 0) {
     // If field is not filled
@@ -36975,7 +36994,7 @@ var getVille = function getVille() {
       });
     }
   }
-};
+}
 
 /***/ }),
 
@@ -37037,38 +37056,14 @@ if (token) {
 
 /***/ }),
 
-/***/ "./resources/sass/admin/app.scss":
-/*!***************************************!*\
-  !*** ./resources/sass/admin/app.scss ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/front/app.scss":
-/*!***************************************!*\
-  !*** ./resources/sass/front/app.scss ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!*********************************************************************************************************!*\
-  !*** multi ./resources/js/admin/app.js ./resources/sass/admin/app.scss ./resources/sass/front/app.scss ***!
-  \*********************************************************************************************************/
+/***/ 1:
+/*!*****************************************!*\
+  !*** multi ./resources/js/admin/app.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/bilel/Sites/iHungryLaravel/resources/js/admin/app.js */"./resources/js/admin/app.js");
-__webpack_require__(/*! /Users/bilel/Sites/iHungryLaravel/resources/sass/admin/app.scss */"./resources/sass/admin/app.scss");
-module.exports = __webpack_require__(/*! /Users/bilel/Sites/iHungryLaravel/resources/sass/front/app.scss */"./resources/sass/front/app.scss");
+module.exports = __webpack_require__(/*! /Users/bilel/Sites/iHungryLaravel/resources/js/admin/app.js */"./resources/js/admin/app.js");
 
 
 /***/ })

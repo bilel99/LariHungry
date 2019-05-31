@@ -1,0 +1,198 @@
+/*=================== custom button rule start ====================*/
+.button {
+  display: inline-block;
+  background-color: $primary-color;
+  color: $white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 30px;
+  padding: 9px 25px;
+  text-transform: capitalize;
+  @include transition;
+
+
+  @media(min-width: 600px) {
+    padding: 12px 45px;
+  }
+
+  &:hover {
+    background-color: red;
+    color: $white;
+  }
+}
+
+.button-header {
+  padding: 7px 26px;
+  border-radius: 0;
+}
+
+.button-hero {
+  // display: flex;
+  align-self: center;
+
+  @media(max-width: 845px) {
+    padding: 8px 19px;
+  }
+}
+
+.button-shadow {
+  box-shadow: -5px 8px 20px 0px rgba(229, 16, 2, 0.15);
+}
+
+button.button {
+  border: 0;
+}
+
+.button-contactForm {
+  border-radius: 5px;
+}
+
+/* Floating button + Label
+--------------------------*/
+.label-container {
+  position: fixed;
+  bottom: 48px;
+  right: 105px;
+  display: table;
+  visibility: hidden;
+  z-index: 10;
+}
+
+.label-text {
+  color: #FFF;
+  background: rgba(51, 51, 51, 0.5);
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.label-arrow {
+  display: table-cell;
+  vertical-align: middle;
+  color: #333;
+  opacity: 0.5;
+  z-index: 10;
+}
+
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #06C;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 10;
+}
+
+.my-float {
+  font-size: 24px;
+  margin-top: 18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Tooltip
+------------------------- */
+.custom-tooltip {
+  position: relative;
+}
+
+.custom-tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+
+.custom-tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+}
+
+.custom-tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.bottom-arrow.tooltiptext {
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.bottom-arrow.tooltiptext::after {
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.top-arrow.tooltiptext {
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.top-arrow.tooltiptext::after {
+  bottom: 100%; /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+.left-arrow.tooltiptext {
+  top: 0;
+  left: 110%;
+  margin-left: 0;
+}
+
+.left-arrow.tooltiptext::after {
+  top: 50%;
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #555 transparent transparent;
+}
+
+.right-arrow.tooltiptext {
+  top: 0;
+  right: 110%;
+  margin-left: 0;
+}
+
+.right-arrow.tooltiptext::after {
+  top: 50%;
+  left: 100%; /* To the right of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #555;
+}
+
+/*=================== custom button rule end ====================*/

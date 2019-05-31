@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Contact;
 use App\Faq;
+use App\Newsletters;
 use App\Restaurant;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -101,6 +102,20 @@ class HomeController extends Controller
         $faq->save();
         $request->session()->flash('success', 'created Question successfully!');
         return redirect()->route('front.contact');
+    }
+
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function createNewsletter(Request $request)
+    {
+        $newsletter = new Newsletters();
+        $newsletter->email = $request->input('newsletter');
+        $newsletter->status = 0;
+        $newsletter->save();
+        $request->session()->flash('success', 'Your email is register successfully!');
+        return redirect()->back();
     }
 
 }

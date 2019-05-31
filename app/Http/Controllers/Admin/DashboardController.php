@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Contact;
 use App\Http\Controllers\Controller;
+use App\Newsletters;
 use App\User;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
@@ -22,6 +25,30 @@ class DashboardController extends Controller
             'nbr_user' => $nbr_user,
             'nbr_contact' => $nb_contact
         ]);
+    }
+
+    /**
+     * @return Factory|View
+     */
+    public function newsletters()
+    {
+        $newsletters = Newsletters::all();
+        return view('admin.newsletters.index', compact(
+            'newsletters'
+        ));
+    }
+
+    /**
+     * @param Newsletters $newsletters
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws \Exception
+     */
+    public function deleteNewsletter(Newsletters $newsletters, Request $request)
+    {
+        $newsletters->delete();
+        $request->session()->flash('success', 'Success deleted!');
+        return redirect()->route('admin.newsletters');
     }
 
 }

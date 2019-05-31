@@ -1,3 +1,5 @@
+import {getVille} from "../app";
+
 require('../bootstrap');
 
 $(document).ready(function () {
@@ -26,7 +28,9 @@ $(document).ready(function () {
      */
     toggleEditCategory();
 
-    // AJAX Request
+    /**
+     * Ajax Get Ville
+     */
     getVille();
 
 });
@@ -101,45 +105,4 @@ let toggleEditCategory = function () {
         // Add attribute name in input_title
         $('.category_title_' + id).attr('name', 'category_title_' + id);
     });
-};
-
-/**
- *  Ajax
- */
-let getVille = function () {
-    // if selector cp exist
-    if ($('#cp').length !== 0) {
-        // If field is not filled
-        $('#cp').keyup(function (e) {
-            let cp = $('#cp').val();
-            if (cp.length === 5) {
-                let url = $('#url_getVille').val().replace(':CP', cp);
-
-                $.ajax({
-                    type: 'GET',
-                    url: url,
-                    success: function (res) {
-                        $('#ville').val(res.ville);
-                    }, error: function () {
-                        alert('error request Ajax');
-                    }
-                });
-            }
-        });
-        // If fields is filled
-        let cp = $('#cp').val();
-        if (cp.length === 5) {
-            let url = $('#url_getVille').val().replace(':CP', cp);
-            $.ajax({
-                type: 'GET',
-                url: url,
-                success: function (res) {
-                    $('#ville').val(res.ville);
-                }, error: function () {
-                    alert('error request Ajax');
-                }
-            });
-        }
-    }
-
 };

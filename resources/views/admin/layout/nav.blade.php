@@ -31,6 +31,9 @@
                 <li class="nav-item {{ (strpos(Route::currentRouteName(), 'admin.contact') === 0) ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('admin.contact') }}"><i class="fas fa-id-card"></i> Contact</a>
                 </li>
+                <li class="nav-item {{ (strpos(Route::currentRouteName(), 'admin.newsletters') === 0) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.newsletters') }}"><i class="fas fa-mail-bulk"></i> Newsletters</a>
+                </li>
             </ul>
             <ul class="navbar-nav mt-2 mt-md-0">
                 @guest

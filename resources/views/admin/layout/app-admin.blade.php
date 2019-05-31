@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ mix('/admin/css/app.css') }}" rel="stylesheet">
     <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" async defer></script>
     <script src="{{ mix('/admin/js/app.js') }}" async defer></script>
     <link href="{{ asset('plugins/select2/select2.min.css') }}" rel="stylesheet" />
 

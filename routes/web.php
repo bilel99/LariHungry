@@ -22,7 +22,7 @@ Auth::routes();
 /************************************************************************************#
  *  FRONT ROUTE
  ************************************************************************************/
-Route::namespace('Front')->name('front.')->group(function () {
+Route::middleware(['auth'])->namespace('Front')->name('front.')->group(function () {
 
     /**
      * Front - Home Route
@@ -31,6 +31,7 @@ Route::namespace('Front')->name('front.')->group(function () {
     Route::get('/contact', 'HomeController@contact')->name('contact');
     Route::post('/create-contact', 'HomeController@createContact')->name('contact.store');
     Route::post('/create-faq', 'HomeController@createFaq')->name('faq.store');
+    Route::post('/create-newsletter', 'HomeController@createNewsletter')->name('create.newsletter');
 
     /**
      * Front / User - Route
@@ -41,17 +42,24 @@ Route::namespace('Front')->name('front.')->group(function () {
     Route::put('/update-password/{user}', 'UserController@updatePassword')->name('update.password');
     Route::delete('/delete-user/{user}', 'UserController@destroy')->name('delete.user');
 
+    /**
+     * Restaurant / Admin - Route
+     */
+    Route::resource('/restaurant', 'RestaurantsController');
+
 });
 
 /************************************************************************************#
  *  ADMIN ROUTE
  ************************************************************************************/
-Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth'])->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
     /**
      * DASHBOARD ADMIN ROUTE
      */
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('can:authorize');
+    Route::get('/newsletters', 'DashboardController@newsletters')->name('newsletters')->middleware('can:authorize');
+    Route::delete('/newsletter/{newsletters}', 'DashboardController@deleteNewsletter')->name('delete-newsletter')->middleware('can:authorize');
 
     /**
      * USER ADMIN ROUTE

@@ -1,0 +1,99 @@
+/* BTN Admin Inline
+------------------------- */
+.form-delete {
+  display: inline-block;
+}
+
+.form-edit {
+  display: inline-block;
+}
+
+.btn-show {
+  display: inline-block;
+  color: #27ae60;
+}
+
+.btn-edit {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  color: #0066CC;
+}
+
+.btn-edit-float-right {
+  margin-left: 300px;
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  color: #0066CC;
+}
+
+.btn-delete {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  color: #e74c3c;
+}
+
+.btn-submit {
+  border: none;
+  background-color: transparent;
+}
+
+/* Floating button + Label
+--------------------------*/
+.label-container {
+  position: fixed;
+  bottom: 48px;
+  right: 105px;
+  display: table;
+  visibility: hidden;
+  z-index: 10;
+}
+
+.label-text {
+  color: #FFF;
+  background: rgba(51, 51, 51, 0.5);
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.label-arrow {
+  display: table-cell;
+  vertical-align: middle;
+  color: #333;
+  opacity: 0.5;
+  z-index: 10;
+}
+
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #06C;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 10;
+}
+
+.my-float {
+  font-size: 24px;
+  margin-top: 18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container {
+  visibility: visible;
+  opacity: 1;
+}

@@ -1,0 +1,46 @@
+.list-restaurants {
+  a:hover {
+    text-decoration: none;
+  }
+
+  .card {
+    min-height: 516px;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);
+  }
+
+  .card:hover {
+    z-index: 2;
+    box-shadow: 0px 0px 150px #aaa;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.1);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.1);
+    transition: all 200ms ease-in;
+    transform: scale(1.1);
+  }
+
+}
+
+/* Center align the text within the three columns below the carousel */
+.list-restaurants .col-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.list-restaurants h2 {
+  font-weight: 400;
+}
+
+.list-restaurants .col-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}

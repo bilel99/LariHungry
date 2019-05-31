@@ -3,22 +3,52 @@
 namespace App\Http\Controllers\front;
 
 use App\Categorie;
-use App\Media;
+use App\Http\Helpers\UploaderFiles;
 use App\Restaurant;
 use App\Tag;
 use App\Ville;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 class RestaurantsController extends Controller
 {
-
+    use UploaderFiles;
 
     public function __construct()
     {
+    }
+
+    /**
+     * @return Factory|View
+     */
+    public function index()
+    {
+        $restaurants = \App\Restaurant::with('categories', 'tags', 'medias', 'user', 'ville')
+            ->get();
+
+        $images = [];
+        foreach ($restaurants as $row) {
+            foreach ($row->medias as $m) {
+                $item = explode('/', $m->path);
+                array_push($images, end($item));
+            }
+        }
+        return view('front.restaurant.index',
+            compact('restaurants', 'images'));
+    }
+
+    public function show(Restaurant $restaurant)
+    {
+        $restaurant = \App\Restaurant::with('categories', 'tags', 'medias', 'user', 'ville')
+            ->where('id', $restaurant->id)
+            ->get();
+
+        return view('front.restaurant.show',
+            compact('restaurant'));
     }
 
     public function create()
@@ -33,48 +63,8 @@ class RestaurantsController extends Controller
         ]);
     }
 
-    /**
-     * @param int $cp
-     * @param Request $request
-     * @return JsonResponse
-     * @throws \Exception
-     */
-    public function getVille(int $cp, Request $request)
+    public function store(Request $request)
     {
-        $ville = Ville::where('zipcode', $cp)->limit(1)->get();
-        if ($ville) {
-            // Ajax
-            if ($request->isXmlHttpRequest()) {
-                $response = new JsonResponse();
-                return $response->setData([
-                    'ville' => $ville[0]->libelle
-                ]);
-            }
-        } else {
-            throw new \Exception('Error request Ajax');
-        }
-    }
-
-    /**
-     * @param Restaurant $restaurant
-     */
-    public function deletedFileExist(Restaurant $restaurant)
-    {
-        // Deleted files exists
-        $media = Media::with('restaurants')->get();
-        foreach ($media as $m) {
-            foreach ($m->restaurants as $r) {
-                if ($r->id === $restaurant->id) {
-                    // deleted file
-                    if (file_exists($m->path)) {
-                        unlink($m->path);
-                    }
-                }
-            }
-        }
-    }
-
-    public function store(Request $request){
         $validation = Validator::make($request->all(), [
             'title' => 'required|min:2',
             'description' => 'required|min:10',
@@ -86,7 +76,7 @@ class RestaurantsController extends Controller
             // mimes:jpeg,png,jpg|size:2048
         ]);
         if ($validation->fails()) {
-            return redirect()->route('restaurant.create')
+            return redirect()->route('front.restaurant.create')
                 ->withErrors($validation)
                 ->withInput();
         }
@@ -116,11 +106,11 @@ class RestaurantsController extends Controller
         $directory = 'uploads/restaurants/';
         if ($request->file($name) !== null) {
             $this->deletedFileExist($restaurant);
-            $this->addMedia($request, $restaurant, $name, $directory,false, true);
+            $this->addMedia($request, $restaurant, $name, $directory, false, true);
         }
 
         $request->session()->flash('success', 'created restaurant successfully!');
-        return redirect()->route('restaurant.index');
+        return redirect()->route('front.restaurant.index');
     }
 
 }

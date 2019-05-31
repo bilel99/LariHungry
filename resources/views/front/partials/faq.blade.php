@@ -1,10 +1,7 @@
 <div id="accordion">
-    <h1>Foire Au Questions</h1>
-
     @if(count($faq) === 0 || $faq === null)
         <p>Empty FAQ!</p>
     @endif
-
     @foreach($faq as $key => $row)
         <div class="card">
             <div class="card-header" id="heading{{$key}}">
@@ -25,5 +22,4 @@
             </div>
         </div>
     @endforeach
-
 </div>

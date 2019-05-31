@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -36819,6 +36819,61 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/app.js":
+/*!*****************************!*\
+  !*** ./resources/js/app.js ***!
+  \*****************************/
+/*! exports provided: getVille */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getVille", function() { return getVille; });
+/**
+ *  Ajax
+ */
+function getVille() {
+  // if selector cp exist
+  if ($('#cp').length !== 0) {
+    // If field is not filled
+    $('#cp').keyup(function (e) {
+      var cp = $('#cp').val();
+
+      if (cp.length === 5) {
+        var url = $('#url_getVille').val().replace(':CP', cp);
+        $.ajax({
+          type: 'GET',
+          url: url,
+          success: function success(res) {
+            $('#ville').val(res.ville);
+          },
+          error: function error() {
+            alert('error request Ajax');
+          }
+        });
+      }
+    }); // If fields is filled
+
+    var cp = $('#cp').val();
+
+    if (cp.length === 5) {
+      var url = $('#url_getVille').val().replace(':CP', cp);
+      $.ajax({
+        type: 'GET',
+        url: url,
+        success: function success(res) {
+          $('#ville').val(res.ville);
+        },
+        error: function error() {
+          alert('error request Ajax');
+        }
+      });
+    }
+  }
+}
+
+/***/ }),
+
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -36881,14 +36936,87 @@ if (token) {
 /*!***********************************!*\
   !*** ./resources/js/front/app.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
+
 
 __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
 
+$('document').ready(function () {
+  /*-------------------------------------------------------------------------------
+  featured slider
+  -------------------------------------------------------------------------------*/
+  if ($('.featured-carousel').length) {
+    $('.featured-carousel').owlCarousel({
+      loop: false,
+      margin: 30,
+      items: 1,
+      nav: true,
+      dots: false,
+      responsiveClass: true,
+      slideSpeed: 300,
+      paginationSpeed: 500,
+      navText: ["<div class='left-arrow'><i class='ti-angle-left'></i></div>", "<div class='right-arrow'><i class='ti-angle-right'></i></div>"],
+      responsive: {
+        768: {
+          items: 2
+        },
+        1100: {
+          items: 3
+        }
+      }
+    });
+  }
+  /*-------------------------------------------------------------------------------
+  featured slider
+  -------------------------------------------------------------------------------*/
+
+
+  if ($('.hero-carousel').length) {
+    $('.hero-carousel').owlCarousel({
+      loop: false,
+      margin: 30,
+      items: 1,
+      nav: false,
+      dots: true,
+      responsiveClass: true,
+      slideSpeed: 300,
+      paginationSpeed: 500
+    });
+  }
+  /**
+   * Ajax Get Ville
+   */
+
+
+  Object(_app__WEBPACK_IMPORTED_MODULE_0__["getVille"])();
+}); //* Navbar Fixed
+
+function navbarFixed() {
+  var nav_offset_top = $('header').height() + 50;
+
+  if ($('.header_area').length) {
+    $(window).scroll(function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= nav_offset_top) {
+        $(".header_area").addClass("navbar_fixed");
+      } else {
+        $(".header_area").removeClass("navbar_fixed");
+      }
+    });
+  }
+}
+
+navbarFixed();
+
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!*****************************************!*\
   !*** multi ./resources/js/front/app.js ***!
   \*****************************************/

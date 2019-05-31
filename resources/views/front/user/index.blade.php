@@ -1,11 +1,5 @@
 @extends('front.layout.app')
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="top-page-contact"></div>
-        </div>
-    </div>
-
     <div class="container">
         <div class="row">
 

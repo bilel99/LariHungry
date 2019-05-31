@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Categorie;
 use App\Http\Helpers\UploaderFiles;
-use App\Media;
 use App\Tag;
 use App\Restaurant;
 use App\Ville;
