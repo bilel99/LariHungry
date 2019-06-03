@@ -37,7 +37,7 @@
                     @csrf
                     @method('POST')
                     <div class="form-group">
-                        <label for="newsletter">click to enter by submit form</label>
+                        <label for="newsletter">click enter for validate</label>
                         <input type="text" class="form-control" name="newsletter" placeholder="john.doe@domain.com">
                     </div>
                 </form>

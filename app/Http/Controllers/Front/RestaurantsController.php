@@ -8,6 +8,7 @@ use App\Restaurant;
 use App\Tag;
 use App\Ville;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -37,8 +38,15 @@ class RestaurantsController extends Controller
                 array_push($images, end($item));
             }
         }
+
+        $categories = Categorie::all();
+        $tag = Tag::all();
+
+        $pluckCat = $categories->pluck('title', 'id');
+        $pluckTag = $tag->pluck('tag', 'id');
+
         return view('front.restaurant.index',
-            compact('restaurants', 'images'));
+            compact('restaurants', 'images', 'pluckTag', 'pluckCat'));
     }
 
     public function show(Restaurant $restaurant)
@@ -111,6 +119,32 @@ class RestaurantsController extends Controller
 
         $request->session()->flash('success', 'created restaurant successfully!');
         return redirect()->route('front.restaurant.index');
+    }
+
+    public function search(Request $request, Restaurant $restaurant)
+    {
+        $categories = Categorie::all();
+        $tag = Tag::all();
+
+        $pluckCat = $categories->pluck('title', 'id');
+        $pluckTag = $tag->pluck('tag', 'id');
+
+        $name = $request->input('title');
+        $city = $request->input('ville');
+        $category = $request->input('category');
+        $tag = $request->input('tag');
+        $minPrice = $request->input('minPrice');
+        $maxPrice = $request->input('maxPrice');
+        $search = $restaurant->search($name, $city, $category, $tag, $minPrice, $maxPrice);
+
+        $images = [];
+        foreach ($search as $row) {
+            $item = explode('/', $row->path);
+            array_push($images, end($item));
+        }
+
+        return view('front.restaurant.search',
+            compact('pluckCat', 'pluckTag', 'search', 'images'));
     }
 
 }

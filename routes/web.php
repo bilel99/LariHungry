@@ -43,6 +43,11 @@ Route::middleware(['auth'])->namespace('Front')->name('front.')->group(function 
     Route::delete('/delete-user/{user}', 'UserController@destroy')->name('delete.user');
 
     /**
+     * Search Module
+     */
+    Route::post('/search-restaurant', 'RestaurantsController@search')->name('search.restaurant');
+
+    /**
      * Restaurant / Admin - Route
      */
     Route::resource('/restaurant', 'RestaurantsController');
