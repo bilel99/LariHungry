@@ -42,6 +42,23 @@ class DashboardController extends Controller
      * @param Newsletters $newsletters
      * @param Request $request
      * @return RedirectResponse
+     */
+    public function changeStatusNewsletter(Newsletters $newsletters, Request $request)
+    {
+        if ($newsletters->status === 0) {
+            $newsletters->status = 1;
+        } else {
+            $newsletters->status = 0;
+        }
+        $newsletters->save();
+        $request->session()->flash('success', 'Status is changed!');
+        return redirect()->route('admin.newsletters');
+    }
+
+    /**
+     * @param Newsletters $newsletters
+     * @param Request $request
+     * @return RedirectResponse
      * @throws \Exception
      */
     public function deleteNewsletter(Newsletters $newsletters, Request $request)

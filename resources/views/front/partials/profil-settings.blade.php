@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ route('front.profil.mypost', Auth::user()->id) }}">
                     <span class="fa fa-angle-double-right text-primary"></span>My posts
                     <i class="fas fa-utensils"></i>
                 </a>
@@ -40,13 +40,13 @@
 
             <!-- delete account -->
             <li>
-                <form id="form-user-delete" action="" method="post">
+                <form id="form-user-delete" action="{{ route('front.delete.user', Auth::user()->id) }}" method="post">
                     @csrf
                     @method('DELETE')
-                    <a href="{{ route('front.delete.user', Auth::user()->id) }}" id="delete-account">
+                    <button class="btn btn-danger" type="submit">
                         <span class="fa fa-angle-double-right text-primary"></span>Deleted account
                         <i class="fas fa-trash-alt"></i>
-                    </a>
+                    </button>
                 </form>
             </li>
         </ul>

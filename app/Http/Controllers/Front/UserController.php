@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Helpers\UploaderFiles;
 use App\Media;
+use App\Restaurant;
 use App\User;
 use Exception;
 use Illuminate\Http\RedirectResponse;
@@ -104,6 +105,18 @@ class UserController extends Controller
         $user->save();
         $request->session()->flash('success', 'updated password successfully');
         return redirect()->route('front.profil', Auth::user()->id);
+    }
+
+    public function myPost(User $user)
+    {
+        $restaurants = Restaurant
+            ::with('categories', 'tags', 'medias', 'user', 'ville')
+            ->where('user_id', '=', $user->id)
+            ->get();
+        return view('front.user.my-post', [
+            'user' => $user,
+            'restaurants' => $restaurants
+        ]);
     }
 
     /**

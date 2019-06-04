@@ -40,6 +40,7 @@ Route::middleware(['auth'])->namespace('Front')->name('front.')->group(function 
     Route::put('/update-account/{user}', 'UserController@update')->name('update.account');
     Route::get('/edit-password/{user}', 'UserController@editPassword')->name('edit.password');
     Route::put('/update-password/{user}', 'UserController@updatePassword')->name('update.password');
+    Route::get('/profil/my-post/{user}', 'UserController@myPost')->name('profil.mypost');
     Route::delete('/delete-user/{user}', 'UserController@destroy')->name('delete.user');
 
     /**
@@ -48,7 +49,7 @@ Route::middleware(['auth'])->namespace('Front')->name('front.')->group(function 
     Route::post('/search-restaurant', 'RestaurantsController@search')->name('search.restaurant');
 
     /**
-     * Restaurant / Admin - Route
+     * Restaurant - Route
      */
     Route::resource('/restaurant', 'RestaurantsController');
 
@@ -64,6 +65,7 @@ Route::middleware(['auth'])->namespace('Admin')->prefix('admin')->name('admin.')
      */
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('can:authorize');
     Route::get('/newsletters', 'DashboardController@newsletters')->name('newsletters')->middleware('can:authorize');
+    Route::put('/newsletters-change-status/{newsletters}', 'DashboardController@changeStatusNewsletter')->name('newsletters.change-status')->middleware('can:authorize');
     Route::delete('/newsletter/{newsletters}', 'DashboardController@deleteNewsletter')->name('delete-newsletter')->middleware('can:authorize');
 
     /**

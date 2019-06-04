@@ -1,5 +1,19 @@
 /* BTN Admin Inline
 ------------------------- */
+.btn-to-link {
+  display: inline;
+  border: none;
+  background-color: transparent;
+}
+
+.fa-toggle-off {
+  color: #e74c3c;
+}
+
+.fa-toggle-on {
+  color: #155724;
+}
+
 .form-delete {
   display: inline-block;
 }

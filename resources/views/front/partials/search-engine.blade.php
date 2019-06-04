@@ -45,14 +45,6 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="tag">Tag</label>
-                    <select name="tag" class="form-control" multiple>
-                        @foreach($pluckTag as $key => $row)
-                            <option value="{{ $key }}">{{ $row }}</option>
-                        @endforeach
-                    </select>
-                </div>
             </div>
         </form>
     </div>
