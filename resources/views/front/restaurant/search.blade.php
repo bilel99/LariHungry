@@ -6,12 +6,17 @@
 
     <!--================List Restaurants start =================-->
     <div class="list-restaurants row col-12">
-        @foreach($search as $key => $row)
+        <div class="offset-2 col-8 offset-2">
+            @if(count($search) > 0)
+                <h3 class="text-center text-muted">currently {{ count($search) }} results</h3>
+            @endif
+        </div>
+        @forelse($search as $row)
             <div class="col-4">
                 <a class="link-list-restaurant" href="{{ route('front.restaurant.show', $row->restaurant_id) }}">
                     <div class="card">
                         @if($row->path)
-                            <img src="{{ asset('uploads/restaurants/' . $images[$key]) }}" class="card-img"
+                            <img src="{{ asset('uploads/restaurants/' . $images[$loop->index]) }}" class="card-img"
                                  alt="Restaurant view" width="250" height="250">
                         @else
                             {{-- default image --}}
@@ -43,7 +48,11 @@
                     </div>
                 </a>
             </div>
-        @endforeach
+        @empty
+            <div class="offset-2 col-8 offset-2">
+                <h3 class="text-center">Sorry I did not find anything...</h3>
+            </div>
+        @endforelse
     </div>
     <!--================List Restaurants end =================-->
 

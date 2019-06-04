@@ -41,4 +41,16 @@ class Newsletters extends Model
         return date('d/m/Y H\Hi', date_timestamp_get(date_create($this->created_at)));
     }
 
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        if ($this->status === 1) {
+            return 'subscribe';
+        } else {
+            return 'unsubscribe';
+        }
+    }
+
 }

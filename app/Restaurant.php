@@ -71,10 +71,9 @@ class Restaurant extends Model
             ->join('categories as c', 'rc.categories_id', '=', 'c.id')
             ->select('r.*', 'r.id as restaurant_id', 'r.title as restaurant_title', 'r.updated_at as restaurant_updatedAt', 'v.*', 'u.*', 'rm.*', 'm.*', 'rt.*', 't.*', 'rc.*', 'c.*')
             ->where('r.title', 'LIKE', '%' . $name . '%')
-            ->orWhere('v.libelle', 'LIKE', '%' . $city . '%')
-            ->orWhere('c.title', 'LIKE', '%' . $cat . '%')
-            ->orWhere('t.tag', 'LIKE', '%' . $tag . '%')
-            ->orwhereBetween('r.price', [$minPrice, $maxPrice])
+            ->Where('v.libelle', 'LIKE', '%' . $city . '%')
+            ->Where('c.title', 'LIKE', '%' . $cat . '%')
+            ->OrwhereBetween('r.price', [$minPrice, $maxPrice])
             ->orderBy('r.created_at', 'DESC')
             ->get();
     }

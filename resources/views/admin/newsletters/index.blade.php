@@ -16,7 +16,22 @@
             <tr>
                 <td>{{ $row->id }}</td>
                 <td>{{ $row->email }}</td>
-                <td>{{ $row->status }}</td>
+                <td>
+                    <form method="post" action="{{ route('admin.newsletters.change-status', $row->id) }}">
+                        @csrf
+                        @method('PUT')
+                        @if($row->status === 0)
+                            <button class="btn-to-link" type="submit">
+                                <i class="fas fa-toggle-off"></i>
+                            </button>
+                        @else
+                            <button class="btn-to-link" type="submit">
+                                <i class="fas fa-toggle-on"></i>
+                            </button>
+                        @endif
+                        {{ '('.$row->getStatus().')' }}
+                    </form>
+                </td>
                 <td>{{ $row->getCreateddateAttribute() }}</td>
                 <td>
                     <form class="form-delete" method="post" action="{{ route('admin.delete-newsletter', $row->id) }}">

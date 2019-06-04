@@ -112,7 +112,7 @@ class HomeController extends Controller
     {
         $newsletter = new Newsletters();
         $newsletter->email = $request->input('newsletter');
-        $newsletter->status = 0;
+        $newsletter->status = 1;
         $newsletter->save();
         $request->session()->flash('success', 'Your email is register successfully!');
         return redirect()->back();

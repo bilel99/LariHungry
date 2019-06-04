@@ -8,7 +8,6 @@ use App\Restaurant;
 use App\Tag;
 use App\Ville;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -40,15 +39,16 @@ class RestaurantsController extends Controller
         }
 
         $categories = Categorie::all();
-        $tag = Tag::all();
-
         $pluckCat = $categories->pluck('title', 'id');
-        $pluckTag = $tag->pluck('tag', 'id');
 
         return view('front.restaurant.index',
-            compact('restaurants', 'images', 'pluckTag', 'pluckCat'));
+            compact('restaurants', 'images', 'pluckCat'));
     }
 
+    /**
+     * @param Restaurant $restaurant
+     * @return Factory|View
+     */
     public function show(Restaurant $restaurant)
     {
         $restaurant = \App\Restaurant::with('categories', 'tags', 'medias', 'user', 'ville')
@@ -59,6 +59,9 @@ class RestaurantsController extends Controller
             compact('restaurant'));
     }
 
+    /**
+     * @return Factory|View
+     */
     public function create()
     {
         $categories = Categorie::all();
@@ -71,6 +74,10 @@ class RestaurantsController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $validation = Validator::make($request->all(), [
@@ -121,13 +128,15 @@ class RestaurantsController extends Controller
         return redirect()->route('front.restaurant.index');
     }
 
+    /**
+     * @param Request $request
+     * @param Restaurant $restaurant
+     * @return Factory|View
+     */
     public function search(Request $request, Restaurant $restaurant)
     {
         $categories = Categorie::all();
-        $tag = Tag::all();
-
         $pluckCat = $categories->pluck('title', 'id');
-        $pluckTag = $tag->pluck('tag', 'id');
 
         $name = $request->input('title');
         $city = $request->input('ville');
@@ -144,7 +153,22 @@ class RestaurantsController extends Controller
         }
 
         return view('front.restaurant.search',
-            compact('pluckCat', 'pluckTag', 'search', 'images'));
+            compact('pluckCat', 'search', 'images'));
+    }
+
+    /**
+     * @param Restaurant $restaurant
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function destroy(Restaurant $restaurant, Request $request)
+    {
+        if ($restaurant->user_id === Auth::user()->id) {
+            $restaurant->delete();
+            $request->session()->flash('success', 'Restaurant is deleted!');
+            return redirect()->route('front.restaurant.index');
+        }
     }
 
 }

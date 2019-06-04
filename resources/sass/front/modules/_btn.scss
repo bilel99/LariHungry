@@ -1,4 +1,26 @@
 /*=================== custom button rule start ====================*/
+.btn-to-link {
+  display: inline;
+  border: none;
+  background-color: transparent;
+}
+
+.fa-toggle-off {
+  color: #e74c3c;
+}
+
+.fa-toggle-on {
+  color: #007b5e;
+}
+
+.fa-trash-alt {
+  color: #e74c3c;
+}
+
+.fa-pencil-alt {
+  color: #007b5e;
+}
+
 .button {
   display: inline-block;
   background-color: $primary-color;
