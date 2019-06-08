@@ -13,16 +13,22 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        /*Schema::create('users', function (Blueprint $table) {
+        //if (!Schema::hasTable('users')) {
+        Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('media_id')->nullable();
             $table->string('name');
+            $table->string('firstname');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->longText('roles');
+            $table->boolean('is_active')->nullable();
             $table->rememberToken();
             $table->timestamps();
-        });*/
+        });
     }
+    //}
 
     /**
      * Reverse the migrations.
@@ -31,6 +37,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('users');
+        Schema::dropIfExists('users');
     }
 }
