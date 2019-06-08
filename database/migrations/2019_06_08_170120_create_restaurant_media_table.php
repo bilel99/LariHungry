@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration
+class CreateRestaurantMediaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('password_resets')) {
-            Schema::create('password_resets', function (Blueprint $table) {
-                $table->string('email')->index();
-                $table->string('token');
-                $table->timestamp('created_at')->nullable();
+        if (!Schema::hasTable('restaurant_media')) {
+            Schema::create('restaurant_media', function (Blueprint $table) {
+                $table->integer('restaurant_id')->unsigned();
+                $table->integer('media_id')->unsigned();
             });
         }
     }
@@ -29,6 +28,6 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::dropIfExists('restaurant_media');
     }
 }
