@@ -16,12 +16,12 @@
           crossorigin="anonymous">
     <!-- Izitoast -->
     <script src="{{ asset('plugins/izitoast/iziToast.min.js') }}"></script>
-    <!-- Styles -->
-    <link href="{{ mix('/admin/css/app.css') }}" rel="stylesheet">
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" async defer></script>
-    <script src="{{ mix('/admin/js/app.js') }}" async defer></script>
+    <!-- Quill editor wisywig -->
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <!-- Select2 -->
     <link href="{{ asset('plugins/select2/select2.min.css') }}" rel="stylesheet" />
+    <!-- Style -->
+    <link href="{{ mix('/admin/css/app.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -49,17 +49,16 @@
 @include('admin/layout/footer')
 </main>
 
+<!-- Plugins -->
 <script src="{{ asset('plugins/jquery.min.js') }}"></script>
 <script src="{{ asset('plugins/select2/select2.min.js') }}"></script>
-<script>
-    /**
-     * Select2 plugins
-     */
-    $('select').select2({
-        placeholder: 'Selected the elements',
-        tags: true
-    });
-</script>
+<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<!-- Modules Js -->
+<script src="{{ asset('admin/modules/select2Function.js') }}"></script>
+<script src="{{ asset('admin/modules/quillFunction.js') }}"></script>
+<!-- Script -->
+<script src="{{ mix('js/app.js') }}" async defer></script>
+<script src="{{ mix('/admin/js/app.js') }}" async defer></script>
 
 </body>
 </html>

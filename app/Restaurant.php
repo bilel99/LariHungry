@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\DB;
 
 class Restaurant extends Model
@@ -81,32 +82,43 @@ class Restaurant extends Model
     /**
      * Relationship
      */
-    public
-    function categories()
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function categories()
     {
         return $this->belongsToMany(Categorie::class, 'restaurant_categories', 'restaurant_id', 'categories_id');
     }
 
-    public
-    function tags()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tags()
     {
         return $this->belongsToMany(Tag::class, 'restaurant_tag', 'restaurant_id', 'tag_id');
     }
 
-    public
-    function medias()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function medias()
     {
         return $this->belongsToMany(Media::class, 'restaurant_media', 'restaurant_id', 'media_id');
     }
 
-    public
-    function user()
+    /**
+     * @return BelongsTo
+     */
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public
-    function ville()
+    /**
+     * @return BelongsTo
+     */
+    public function ville()
     {
         return $this->belongsTo(Ville::class);
     }

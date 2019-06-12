@@ -4,7 +4,7 @@
   }
 
   .card {
-    min-height: 516px;
+    min-height: 690px;
     -webkit-transition: all 200ms ease-in;
     -webkit-transform: scale(1);
     -ms-transition: all 200ms ease-in;
@@ -43,4 +43,12 @@
 .list-restaurants .col-4 p {
   margin-right: .75rem;
   margin-left: .75rem;
+}
+
+.title-rating-star {
+  font-size: 1.3em;
+}
+
+.actions-comment {
+
 }

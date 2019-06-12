@@ -5,6 +5,15 @@
   background-color: transparent;
 }
 
+.form-add-to-fav {
+  display: inline;
+}
+
+.btn-add-to-fav {
+  border: none;
+  background-color: transparent;
+}
+
 .fa-toggle-off {
   color: #e74c3c;
 }
@@ -215,6 +224,11 @@ a.float:hover + div.label-container {
   border-width: 5px;
   border-style: solid;
   border-color: transparent transparent transparent #555;
+}
+
+// Star Rating Module
+.rating-star > .fa-star.checked {
+  color: orange;
 }
 
 /*=================== custom button rule end ====================*/

@@ -22,12 +22,11 @@ Auth::routes();
 /************************************************************************************#
  *  FRONT ROUTE
  ************************************************************************************/
-Route::middleware(['auth'])->namespace('Front')->name('front.')->group(function () {
-
+Route::get('/', 'Front\HomeController@index')->name('front.home');
+Route::middleware(['auth_redirect_to_home'])->namespace('Front')->name('front.')->group(function () {
     /**
      * Front - Home Route
      */
-    Route::get('/', 'HomeController@index')->name('home');
     Route::get('/contact', 'HomeController@contact')->name('contact');
     Route::post('/create-contact', 'HomeController@createContact')->name('contact.store');
     Route::post('/create-faq', 'HomeController@createFaq')->name('faq.store');
@@ -52,6 +51,14 @@ Route::middleware(['auth'])->namespace('Front')->name('front.')->group(function 
      * Restaurant - Route
      */
     Route::resource('/restaurant', 'RestaurantsController');
+    Route::post('/restaurant-add-fav/{restaurant}', 'RestaurantsController@addMyFav')->name('restaurant.add-my-fav');
+    Route::post('/restaurant-choice-rating/{restaurant}', 'RestaurantsController@addRating')->name('restaurant.add-rating');
+    Route::post('/restaurant-post-comment/{restaurant}', 'RestaurantsController@postComment')->name('restaurant.post-comment');
+
+    /**
+     * Comments - Route
+     */
+    Route::resource('/comment', 'CommentsController')->except(['create', 'store', 'show', 'edit']);
 
 });
 

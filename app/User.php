@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo as BelongsToAlias;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -91,5 +92,13 @@ class User extends Authenticatable
     /**
      * Relationship
      */
+
+    /**
+     * @return BelongsToAlias
+     */
+    public function media()
+    {
+        return $this->belongsTo(Media::class);
+    }
 
 }

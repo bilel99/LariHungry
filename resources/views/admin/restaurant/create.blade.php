@@ -32,6 +32,7 @@
                         <div class="form-group">
                             <label for="restaurant.description">Description</label>
                             <textarea name="description"
+                                      id="editor"
                                       class="form-control"
                                       cols="30"
                                       aria-describedby="restaurant.description restaurant.description.error"

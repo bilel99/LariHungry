@@ -13,7 +13,7 @@ class CreateForeignKeys extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        /*Schema::table('users', function (Blueprint $table) {
             $table->foreign('media_id')
                 ->references('id')->on('media');
         });
@@ -68,7 +68,7 @@ class CreateForeignKeys extends Migration
                 ->references('id')->on('restaurant');
             $table->foreign('categories_id')
                 ->references('id')->on('categories');
-        });
+        });*/
     }
 
     /**

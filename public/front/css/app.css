@@ -12654,7 +12654,7 @@ ul.quick-links li:hover a i {
 }
 
 .list-restaurants .card {
-  min-height: 516px;
+  min-height: 690px;
   -webkit-transition: all 200ms ease-in;
   -webkit-transform: scale(1);
   -ms-transition: all 200ms ease-in;
@@ -12692,6 +12692,10 @@ ul.quick-links li:hover a i {
 .list-restaurants .col-4 p {
   margin-right: 0.75rem;
   margin-left: 0.75rem;
+}
+
+.title-rating-star {
+  font-size: 1.3em;
 }
 
 /* Latest Blog Area css
@@ -13806,10 +13810,38 @@ ul.quick-links li:hover a i {
   margin-top: 30px;
 }
 
+.my-avatar {
+  text-align: center;
+}
+
+.profil-avatar {
+  border-radius: 50px;
+}
+
+.show-comment-pres {
+  font-weight: normal;
+  padding: 30px;
+  color: #000;
+}
+
+.show-comment-pres .show-comment-comment {
+  padding: 50px;
+  border: 4px solid transparent;
+}
+
 /*=================== custom button rule start ====================*/
 
 .btn-to-link {
   display: inline;
+  border: none;
+  background-color: transparent;
+}
+
+.form-add-to-fav {
+  display: inline;
+}
+
+.btn-add-to-fav {
   border: none;
   background-color: transparent;
 }
@@ -14032,6 +14064,10 @@ a.float:hover + div.label-container {
   border-width: 5px;
   border-style: solid;
   border-color: transparent transparent transparent #555;
+}
+
+.rating-star > .fa-star.checked {
+  color: orange;
 }
 
 /*=================== custom button rule end ====================*/

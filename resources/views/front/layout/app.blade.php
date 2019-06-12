@@ -42,9 +42,11 @@
 <script src="{{ asset('plugins/jquery.min.js') }}"></script>
 <script src="{{ asset('plugins/owl-carousel/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('plugins/select2/select2.min.js') }}"></script>
+<script src="{{ asset('plugins/rater/rater.min.js') }}"></script>
 <!-- Scripts -->
 <script src="{{ asset('front/modules/owlCarouselFunction.js') }}"></script>
 <script src="{{ asset('front/modules/select2Function.js') }}"></script>
+<script src="{{ asset('front/modules/rateFunction.js') }}"></script>
 <script src="{{ mix('js/app.js') }}" async defer></script>
 <script src="{{ mix('/front/js/app.js') }}" async defer></script>
 

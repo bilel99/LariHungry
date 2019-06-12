@@ -3,3 +3,22 @@
 .profil-menu {
   margin-top: 30px;
 }
+
+.my-avatar {
+  text-align: center;
+}
+
+.profil-avatar {
+  border-radius: 50px;
+}
+
+.show-comment-pres {
+  font-weight: normal;
+  padding: 30px;
+  color: #000;
+
+  .show-comment-comment {
+    padding: 50px;
+    border: 4px solid transparent;
+  }
+}

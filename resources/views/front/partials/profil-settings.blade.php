@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ route('front.comment.index') }}">
                     <span class="fa fa-angle-double-right text-primary"></span>My comments
                     <i class="fas fa-comments"></i>
                 </a>

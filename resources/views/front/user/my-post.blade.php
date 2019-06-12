@@ -9,7 +9,7 @@
 
             <!-- table -->
             <div class="col-sm-7 col-md-7 mx-auto">
-                <table class="table table-striped table-borderless table-dark">
+                <table class="table table-striped table-borderless table-dark table-responsive">
                     <thead>
                     <tr>
                         <th scope="col">#</th>

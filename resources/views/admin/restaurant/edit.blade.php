@@ -33,13 +33,14 @@
 
                         <div class="form-group">
                             <label for="restaurant.description">Description</label>
-                            <textarea name="description"
-                                      class="form-control"
-                                      cols="30"
-                                      aria-describedby="restaurant.description restaurant.description.error"
-                                      placeholder="description"
-                                      rows="10"
-                                      required="required">{{ $restaurant->description }}</textarea>
+                            <textarea
+                                    name="description"
+                                    class="form-control"
+                                    cols="30"
+                                    aria-describedby="restaurant.description restaurant.description.error"
+                                    placeholder="description"
+                                    rows="10"
+                                    required="required">{{ $restaurant->description }}</textarea>
                             <small id="restaurant.description"
                                    class="form-text text-muted">
                                 please, Add to description!

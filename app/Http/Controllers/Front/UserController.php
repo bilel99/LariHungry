@@ -7,20 +7,36 @@ use App\Media;
 use App\Restaurant;
 use App\User;
 use Exception;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
     use UploaderFiles;
 
+    /**
+     * @return Factory|View
+     */
     public function index()
     {
-        return view('front.user.index');
+        $user = User
+            ::with('media')
+            ->where('id', Auth::user()->id)
+            ->first();
+
+        $image = '';
+        if ($user->media !== null) {
+            $table = explode('/', $user->media->path);
+            $image = end($table);
+        }
+
+        return view('front.user.index', compact('user', 'image'));
     }
 
     /**
@@ -40,6 +56,11 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return RedirectResponse
+     */
     public function update(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
@@ -78,7 +99,7 @@ class UserController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function editPassword()
     {
@@ -107,6 +128,10 @@ class UserController extends Controller
         return redirect()->route('front.profil', Auth::user()->id);
     }
 
+    /**
+     * @param User $user
+     * @return Factory|View
+     */
     public function myPost(User $user)
     {
         $restaurants = Restaurant

@@ -15,7 +15,21 @@
                             <h5 class="card-title text-center">Edit
                                 account {{ Auth::user()->name .' '. Auth::user()->firstname }}</h5>
 
-                            <form method="post" action="{{ route('front.update.account', Auth::user()->id) }}" enctype="multipart/form-data">
+                            <div class="my-avatar">
+                                @if(Auth::user()->media_id === null)
+                                    {{-- Default avatar --}}
+                                    <img class="profil-avatar"
+                                         src="{{ asset('front/images/default-image-restaurant.jpg') }}" alt="my-avatar"
+                                         width="240">
+                                @else
+                                    <img class="profil-avatar"
+                                         src="{{ asset('uploads/user/'.$image) }}" alt="my-avatar"
+                                         width="240">
+                                @endif
+                            </div>
+
+                            <form method="post" action="{{ route('front.update.account', Auth::user()->id) }}"
+                                  enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
@@ -42,7 +56,8 @@
                                            placeholder="Firstname"
                                            aria-describedby="user.firstname user.firstname.error"
                                            required="required">
-                                    <small id="user.firstname" class="form-text text-muted">please, Add to firstname!</small>
+                                    <small id="user.firstname" class="form-text text-muted">please, Add to firstname!
+                                    </small>
                                     <small id="user.firstname.error"
                                            class="form-text text-danger">{{ $errors->first('firstname') }}</small>
                                 </div>

@@ -1,12 +1,16 @@
 import {getVille} from "../app";
+import {Ajax} from './ajax'
 
 require('../bootstrap');
 
 $('document').ready(() => {
     /**
-     * Ajax Get Ville
+     * Ajax Request
      */
+
+    let ajax = new Ajax();
     getVille();
+    ajax.postRatingStar();
 
 });
 

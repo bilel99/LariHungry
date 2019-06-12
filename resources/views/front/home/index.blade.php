@@ -90,7 +90,7 @@
                     </div>
                 </div>
                 <div class="list-restaurants row col-12">
-                    @foreach($restaurants as $key => $row)
+                    @forelse($restaurants as $key => $row)
                         <div class="col-4">
                             <a class="link-list-restaurant" href="{{ route('front.restaurant.show', $row->id) }}">
                                 <div class="card">
@@ -137,7 +137,9 @@
                                 </div>
                             </a>
                         </div>
-                    @endforeach
+                    @empty
+                        <p>No restaurant at the moment!</p>
+                    @endforelse
                 </div>
             </div>
         </div>

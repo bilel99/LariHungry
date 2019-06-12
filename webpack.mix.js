@@ -14,6 +14,9 @@ const mix = require('laravel-mix');
 // Global
 mix.js('resources/js/app.js', 'public/js');
 
+// Ajax - Front
+mix.js('resources/js/front/ajax.js', 'public/front/ajax');
+
 // Back
 mix.js('resources/js/admin/app.js', 'public/admin/js')
     .sass('resources/sass/admin/app.scss', 'public/admin/css');

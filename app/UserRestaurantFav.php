@@ -3,19 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Comment extends Model
+class UserRestaurantFav extends Model
 {
     /**
+     * Name table
      * @var string
      */
-    protected $table = 'comments';
+    protected $table = 'users_restaurant_fav';
 
     /**
+     * Fillable fields
      * @var array
      */
-    protected $fillable = ['title', 'comment'];
+    protected $fillable = ['user_id', 'restaurant_id', 'fav'];
 
     /**
      * @return false|string
@@ -30,17 +31,9 @@ class Comment extends Model
      */
 
     /**
-     * @return BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * @return BelongsTo
-     */
-    public function restaurant()
+    public function fav()
     {
         return $this->belongsTo(Restaurant::class);
     }
