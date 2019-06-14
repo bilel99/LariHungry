@@ -37835,7 +37835,7 @@ navbarFixed();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/bilel/Sites/iHungryLaravel/resources/js/front/app.js */"./resources/js/front/app.js");
+module.exports = __webpack_require__(/*! /Users/bilel/Sites/LariHungry/resources/js/front/app.js */"./resources/js/front/app.js");
 
 
 /***/ })

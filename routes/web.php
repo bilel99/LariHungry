@@ -60,6 +60,12 @@ Route::middleware(['auth_redirect_to_home'])->namespace('Front')->name('front.')
      */
     Route::resource('/comment', 'CommentsController')->except(['create', 'store', 'show', 'edit']);
 
+    /**
+     * Favorite - Route
+     */
+    Route::get('/favorite', 'FavoriteController@index')->name('fav.index');
+    Route::delete('/delete-favorite/{fav}', 'FavoriteController@destroy')->name('fav.destroy');
+
 });
 
 /************************************************************************************#

@@ -170,9 +170,9 @@ function getVille() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/bilel/Sites/iHungryLaravel/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/bilel/Sites/iHungryLaravel/resources/sass/admin/app.scss */"./resources/sass/admin/app.scss");
-module.exports = __webpack_require__(/*! /Users/bilel/Sites/iHungryLaravel/resources/sass/front/app.scss */"./resources/sass/front/app.scss");
+__webpack_require__(/*! /Users/bilel/Sites/LariHungry/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/bilel/Sites/LariHungry/resources/sass/admin/app.scss */"./resources/sass/admin/app.scss");
+module.exports = __webpack_require__(/*! /Users/bilel/Sites/LariHungry/resources/sass/front/app.scss */"./resources/sass/front/app.scss");
 
 
 /***/ })

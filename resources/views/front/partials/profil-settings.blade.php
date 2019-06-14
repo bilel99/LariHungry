@@ -4,7 +4,7 @@
         <hr class="no-margin">
         <ul class="list-unstyled quick-links">
             <li>
-                <a href="">
+                <a href="{{ route('front.fav.index') }}">
                     <span class="fa fa-angle-double-right text-primary"></span>My favorite restaurants
                     <i class="fas fa-heart"></i>
                 </a>

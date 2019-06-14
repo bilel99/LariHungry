@@ -95,7 +95,7 @@ class RestaurantsController extends Controller
         $avgNotes = $notes->calcAverageAllNoteByRestaurant($restaurant->id);
 
         // Fav
-        $fav = UserRestaurantFav::with('fav')
+        $fav = UserRestaurantFav::with('restaurant')
             ->where('restaurant_id', $restaurant->id)
             ->where('user_id', Auth::user()->id)
             ->first();
@@ -299,7 +299,7 @@ class RestaurantsController extends Controller
 
     public function addMyFav(Restaurant $restaurant, Request $request)
     {
-        $favorite = UserRestaurantFav::with('fav')
+        $favorite = UserRestaurantFav::with('restaurant')
             ->where('user_id', Auth::user()->id)
             ->where('restaurant_id', $restaurant->id)
             ->first();

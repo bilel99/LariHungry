@@ -9,34 +9,32 @@
 
             <!-- table -->
             <div class="col-sm-7 col-md-7 mx-auto">
-                @if(count($comments) > 0)
+                @if(count($fav) > 0)
                     <table class="table table-striped table-borderless table-dark table-responsive">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">comment</th>
                             <th scope="col">user</th>
                             <th scope="col">restaurant</th>
+                            <th scope="col">Favorite</th>
                             <th scope="col">created at</th>
                             <th scope="col">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($comments as $row)
+                        @foreach($fav as $row)
                             <tr>
                                 <th>{{ $row->id }}</th>
-                                <th>{{ mb_strimwidth($row->comment, 0, 15, '...') }}</th>
-                                <th>{{ $row->user->name.' '.$row->user->firstname }}</th>
+                                <th>{{ $row->user->name .' '. $row->user->firstname }}</th>
+                                <th>{{ $row->restaurant->title }}</th>
                                 <th>{{ $row->getCreateddateAttribute() }}</th>
                                 <th>
-                                    @include('front.modals.show-comment')
-                                    <a class="btn-show" href="" data-toggle="modal"
-                                       data-target="#showCommentModal{{ $row->id }}">
+                                    <a class="btn-show" href="{{ route('front.restaurant.show', $row->restaurant->id) }}">
                                         <i class="far fa-eye"></i>
                                     </a>
                                     @if($row->user_id === Auth::user()->id)
                                         <form class="form-delete"
-                                              action="{{ route('front.comment.destroy', $row->id) }}"
+                                              action="{{ route('front.fav.destroy', $row->id) }}"
                                               method="post">
                                             @csrf
                                             @method('DELETE')
@@ -51,7 +49,7 @@
                         </tbody>
                     </table>
                 @else
-                    <span>Not created comment!</span>
+                    <span>Not favorite existing!</span>
                 @endif
             </div>
         </div>

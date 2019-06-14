@@ -944,7 +944,7 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/bilel/Sites/iHungryLaravel/resources/js/front/ajax.js */"./resources/js/front/ajax.js");
+module.exports = __webpack_require__(/*! /Users/bilel/Sites/LariHungry/resources/js/front/ajax.js */"./resources/js/front/ajax.js");
 
 
 /***/ })
