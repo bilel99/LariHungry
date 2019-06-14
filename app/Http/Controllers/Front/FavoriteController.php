@@ -11,6 +11,14 @@ class FavoriteController extends Controller
 {
 
     /**
+     * FavoriteController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
@@ -25,9 +33,10 @@ class FavoriteController extends Controller
 
     public function destroy(UserRestaurantFav $fav)
     {
-        if ($fav->user_id === Auth::user()->id) {
-            $fav->delete();
-            return redirect()->back();
-        }
+        // Policy call method delete return true || false is authorized
+        $this->authorize('delete', $fav);
+
+        $fav->delete();
+        return redirect()->back();
     }
 }

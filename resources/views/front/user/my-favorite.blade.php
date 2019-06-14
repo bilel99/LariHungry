@@ -27,12 +27,14 @@
                                 <th>{{ $row->id }}</th>
                                 <th>{{ $row->user->name .' '. $row->user->firstname }}</th>
                                 <th>{{ $row->restaurant->title }}</th>
+                                <th>{{ $row->fav == true ? 'Favorite' : 'Not Favorite' }}</th>
                                 <th>{{ $row->getCreateddateAttribute() }}</th>
                                 <th>
-                                    <a class="btn-show" href="{{ route('front.restaurant.show', $row->restaurant->id) }}">
+                                    <a class="btn-show"
+                                       href="{{ route('front.restaurant.show', $row->restaurant->id) }}">
                                         <i class="far fa-eye"></i>
                                     </a>
-                                    @if($row->user_id === Auth::user()->id)
+                                    @if(Auth::user()->id === $row->user_id)
                                         <form class="form-delete"
                                               action="{{ route('front.fav.destroy', $row->id) }}"
                                               method="post">

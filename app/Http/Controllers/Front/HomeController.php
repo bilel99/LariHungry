@@ -17,6 +17,13 @@ class HomeController extends Controller
 {
 
     /**
+     * HomeController constructor.
+     */
+    public function __construct()
+    {
+    }
+
+    /**
      * @return Factory|View
      */
     public function index()

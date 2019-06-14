@@ -26,8 +26,12 @@ class RestaurantsController extends Controller
 {
     use UploaderFiles;
 
+    /**
+     * RestaurantsController constructor.
+     */
     public function __construct()
     {
+        $this->middleware('auth')->except('index', 'show', 'search');
     }
 
     /**
@@ -204,6 +208,7 @@ class RestaurantsController extends Controller
     /**
      * @param Restaurant $restaurant
      * @param Request $request
+     * @return RedirectResponse
      */
     public function update(Restaurant $restaurant, Request $request)
     {
@@ -389,11 +394,12 @@ class RestaurantsController extends Controller
      */
     public function destroy(Restaurant $restaurant, Request $request)
     {
-        if ($restaurant->user_id === Auth::user()->id) {
-            $restaurant->delete();
-            $request->session()->flash('success', 'Restaurant is deleted!');
-            return redirect()->route('front.restaurant.index');
-        }
+        // Policy call method delete return true || false is authorized
+        $this->authorize('delete', $restaurant);
+
+        $restaurant->delete();
+        $request->session()->flash('success', 'Restaurant is deleted!');
+        return redirect()->route('front.restaurant.index');
     }
 
 }

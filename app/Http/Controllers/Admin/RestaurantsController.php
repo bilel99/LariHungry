@@ -21,6 +21,14 @@ class RestaurantsController extends Controller
     use UploaderFiles;
 
     /**
+     * UserController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * @return Factory|View
      */
     public function index()

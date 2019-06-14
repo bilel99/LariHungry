@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Policies\FavoritePolicy;
+use App\Policies\RestaurantPolicy;
+use App\Restaurant;
 use App\User;
+use App\UserRestaurantFav;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -15,6 +19,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
+        Restaurant::class => RestaurantPolicy::class,
+        UserRestaurantFav::class => FavoritePolicy::class
     ];
 
     /**

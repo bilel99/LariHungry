@@ -13,6 +13,14 @@ class CategoriesController extends Controller
 {
 
     /**
+     * UserController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * @return Factory|View
      */
     public function index()

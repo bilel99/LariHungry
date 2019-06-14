@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Validator;
 
 class CommentsController extends Controller
 {
+
+    /**
+     * CommentsController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
