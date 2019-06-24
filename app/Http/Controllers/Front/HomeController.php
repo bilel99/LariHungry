@@ -108,7 +108,7 @@ class HomeController extends Controller
         $faq->done = 0;
         $faq->save();
         $request->session()->flash('success', 'created Question successfully!');
-        return redirect()->route('front.contact');
+        return redirect()->back();
     }
 
     /**

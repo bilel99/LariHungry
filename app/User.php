@@ -11,6 +11,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    /**
+     * @var string
+     */
     protected $table = 'user';
 
     /**
@@ -94,7 +97,7 @@ class User extends Authenticatable
      */
 
     /**
-     * @return BelongsToAlias
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function media()
     {

@@ -37,6 +37,8 @@ class FavoriteController extends Controller
         $this->authorize('delete', $fav);
 
         $fav->delete();
-        return redirect()->back();
+        return response()->json([
+            'message' => 'Your favorite is deleted!'
+        ]);
     }
 }

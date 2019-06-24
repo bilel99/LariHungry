@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Newsletters extends Model
 {
+
+    /**
+     * @var string
+     */
     protected $table = 'newsletters';
 
     /**

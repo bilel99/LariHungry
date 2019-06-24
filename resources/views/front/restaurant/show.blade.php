@@ -235,6 +235,16 @@
                                 @endforelse
                             </ul>
                         </aside>
+                        <aside class="single_sidebar_widget actions_cloud_widget">
+                            <h4 class="widget_title">Your actions</h4>
+                            <form method="post" action="">
+                                @csrf
+                                @method("DELETE")
+                                <a href="" class="btn btn-primary">Edited</a>
+                                <button type="submit" class="btn btn-danger">Deleted</button>
+                            </form>
+
+                        </aside>
                     </div>
                 </div>
             </div>

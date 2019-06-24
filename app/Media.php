@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'media';
 
     /**
@@ -28,8 +31,21 @@ class Media extends Model
     /**
      * Relationship
      */
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function restaurants()
     {
         return $this->belongsToMany(Restaurant::class, 'restaurant_media', 'media_id', 'restaurant_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

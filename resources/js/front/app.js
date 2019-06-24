@@ -1,6 +1,5 @@
 import {getVille} from "../app";
 import {Ajax} from './ajax'
-
 require('../bootstrap');
 
 $('document').ready(() => {

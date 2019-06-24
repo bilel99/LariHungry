@@ -1,25 +1,25 @@
 <div id="accordion">
-    @if(count($faq) === 0 || $faq === null)
-        <p>Empty FAQ!</p>
-    @endif
-    @foreach($faq as $key => $row)
+    @forelse($faq as $row)
         <div class="card">
-            <div class="card-header" id="heading{{$key}}">
+            <div class="card-header" id="heading{{$loop->index}}">
                 <h5 class="mb-0">
-                    <button class="btn btn-link {{ $key !== 0 ? 'collapsed' : '' }}" data-toggle="collapse"
-                            data-target="#collapse{{$key}}"
-                            aria-expanded="true" aria-controls="collapse{{$key}}">
+                    <button class="btn btn-link {{ $loop->index !== 0 ? 'collapsed' : '' }}" data-toggle="collapse"
+                            data-target="#collapse{{$loop->index}}"
+                            aria-expanded="true" aria-controls="collapse{{$loop->index}}">
                         {{ $row->question }}
                     </button>
                 </h5>
             </div>
 
-            <div id="collapse{{$key}}" class="collapse {{ $key === 0 ? 'show' : '' }}" aria-labelledby="heading{{$key}}"
+            <div id="collapse{{$loop->index}}" class="collapse {{ $loop->index === 0 ? 'show' : '' }}"
+                 aria-labelledby="heading{{$loop->index}}"
                  data-parent="#accordion">
                 <div class="card-body">
                     {{ $row->answer }}
                 </div>
             </div>
         </div>
-    @endforeach
+    @empty
+        <p>Empty FAQ!</p>
+    @endforelse
 </div>

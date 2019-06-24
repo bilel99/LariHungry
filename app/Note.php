@@ -8,8 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class Note extends Model
 {
+
+    /**
+     * @var string
+     */
     protected $table = 'notes';
 
+    /**
+     * @var array
+     */
     protected $fillable = ['note'];
 
     /**

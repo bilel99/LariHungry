@@ -6,7 +6,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -14,7 +13,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
           crossorigin="anonymous">
-    <!-- Izitoast -->
+    <!-- Izitoast plugins -->
+    <link rel="stylesheet" href="{{ asset('plugins/izitoast/iziToast.min.css') }}">
     <script src="{{ asset('plugins/izitoast/iziToast.min.js') }}"></script>
     <!-- OWL Carousel -->
     <link rel="stylesheet" href="{{ asset('plugins/owl-carousel/owl.theme.default.min.css') }}">
@@ -33,7 +33,6 @@
         @include('front/layout/warning-alert')
         @include('front/layout/info-alert')
     </div>
-
     @include('front/layout/nav')
     @yield('content')
     @include('front/layout/footer')

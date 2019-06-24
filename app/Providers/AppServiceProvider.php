@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /// Bug Laravel (BDD mySQL) fixed bug ==> Schema::defaultStringLength(191);
         Schema::defaultStringLength(191);
     }
 }

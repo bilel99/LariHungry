@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class Restaurant extends Model
 {
+
+    /**
+     * @var string
+     */
     protected $table = 'restaurant';
 
     /**
@@ -122,4 +126,18 @@ class Restaurant extends Model
     {
         return $this->belongsTo(Ville::class);
     }
+
+    /**
+     * @return BelongsTo
+     */
+    public function fav()
+    {
+        return $this->belongsTo(UserRestaurantFav::class);
+    }
+
+    public function comments()
+    {
+        return $this->belongsTo(Comment::class);
+    }
+
 }

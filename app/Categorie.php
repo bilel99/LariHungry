@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categorie extends Model
 {
+
+    /**
+     * @var string
+     */
     protected $table = 'categories';
 
     /**
