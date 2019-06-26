@@ -13,12 +13,16 @@ class CreateRestaurantMediaTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('restaurant_media')) {
-            Schema::create('restaurant_media', function (Blueprint $table) {
-                $table->integer('restaurant_id')->unsigned();
-                $table->integer('media_id')->unsigned();
-            });
-        }
+        Schema::create('restaurant_media', function (Blueprint $table) {
+            $table->integer('restaurant_id')->nullable()->unsigned()->index();
+            $table->integer('media_id')->nullable()->unsigned()->index();
+
+            // Foreign - key
+            $table->foreign('restaurant_id')
+                ->references('id')->on('restaurant');
+            $table->foreign('media_id')
+                ->references('id')->on('media');
+        });
     }
 
     /**

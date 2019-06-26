@@ -15,7 +15,7 @@ class CreatePaysTable extends Migration
     {
         if (!Schema::hasTable('pays')) {
             Schema::create('pays', function (Blueprint $table) {
-                $table->bigIncrements('id');
+                $table->increments('id');
                 $table->integer('code');
                 $table->string('alpha2', 50);
                 $table->string('alpha3', 50);

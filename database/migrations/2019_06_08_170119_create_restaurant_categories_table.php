@@ -13,12 +13,16 @@ class CreateRestaurantCategoriesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('restaurant_categories')) {
-            Schema::create('restaurant_categories', function (Blueprint $table) {
-                $table->integer('restaurant_id')->unsigned();
-                $table->integer('categories_id')->unsigned();
-            });
-        }
+        Schema::create('restaurant_categories', function (Blueprint $table) {
+            $table->integer('restaurant_id')->nullable()->unsigned()->index();
+            $table->integer('categories_id')->nullable()->unsigned()->index();
+
+            // Foreign - key
+            $table->foreign('restaurant_id')
+                ->references('id')->on('restaurant');
+            $table->foreign('categories_id')
+                ->references('id')->on('categories');
+        });
     }
 
     /**

@@ -13,15 +13,20 @@ class CreateNotesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('notes')) {
-            Schema::create('notes', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->string('note', 255);
-                $table->integer('user_id')->unsigned()->nullable();
-                $table->integer('restaurant_id')->unsigned()->nullable();
-                $table->timestamps();
-            });
-        }
+        Schema::create('notes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->nullable()->unsigned()->index();
+            $table->integer('restaurant_id')->nullable()->unsigned()->index();
+            $table->string('note', 255);
+
+            // Foreign - key
+            $table->foreign('user_id')
+                ->references('id')->on('user');
+            $table->foreign('restaurant_id')
+                ->references('id')->on('restaurant');
+
+            $table->timestamps();
+        });
     }
 
     /**

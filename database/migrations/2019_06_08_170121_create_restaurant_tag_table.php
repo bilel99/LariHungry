@@ -13,12 +13,16 @@ class CreateRestaurantTagTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('restaurant_tag')) {
-            Schema::create('restaurant_tag', function (Blueprint $table) {
-                $table->integer('restaurant_id')->unsigned();
-                $table->integer('tag_id')->unsigned();
-            });
-        }
+        Schema::create('restaurant_tag', function (Blueprint $table) {
+            $table->integer('restaurant_id')->nullable()->unsigned()->index();
+            $table->integer('tag_id')->nullable()->unsigned()->index();
+
+            // Foreign - key
+            $table->foreign('restaurant_id')
+                ->references('id')->on('restaurant');
+            $table->foreign('tag_id')
+                ->references('id')->on('tag');
+        });
     }
 
     /**

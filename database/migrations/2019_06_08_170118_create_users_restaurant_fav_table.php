@@ -13,15 +13,20 @@ class CreateUsersRestaurantFavTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('users_restaurant_fav')) {
-            Schema::create('users_restaurant_fav', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->integer('users_id')->unsigned()->nullable();
-                $table->integer('restaurant_id')->unsigned()->nullable();
-                $table->boolean('fav')->default(0)->nullable();
-                $table->timestamps();
-            });
-        }
+        Schema::create('users_restaurant_fav', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->nullable()->unsigned()->index();
+            $table->integer('restaurant_id')->nullable()->unsigned()->index();
+            $table->boolean('fav')->default(0)->nullable();
+
+            // Foreign - key
+            $table->foreign('user_id')
+                ->references('id')->on('user');
+            $table->foreign('restaurant_id')
+                ->references('id')->on('restaurant');
+
+            $table->timestamps();
+        });
     }
 
     /**

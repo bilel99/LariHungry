@@ -13,15 +13,13 @@ class CreateMediaTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('media')) {
-            Schema::create('media', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->integer('type')->nullable();
-                $table->string('name', 255)->nullable();
-                $table->string('path', 255);
-                $table->timestamps();
-            });
-        }
+        Schema::create('media', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('type')->nullable();
+            $table->string('name', 255)->nullable();
+            $table->string('path', 255);
+            $table->timestamps();
+        });
     }
 
     /**

@@ -15,8 +15,8 @@ class CreateVilleTable extends Migration
     {
         if (!Schema::hasTable('ville')) {
             Schema::create('ville', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->integer('pays_id')->unsigned();
+                $table->increments('id');
+                $table->integer('pays_id')->nullable()->unsigned()->index();
                 $table->string('departement_code', 3)->nullable();
                 $table->string('zipcode', 5);
                 $table->string('insee', 5)->nullable();
@@ -27,6 +27,10 @@ class CreateVilleTable extends Migration
                 $table->string('latitude', 255)->nullable();
                 $table->string('codex', 255)->nullable();
                 $table->string('metaphone', 255)->nullable();
+
+                // Foreign - key
+                $table->foreign('pays_id')
+                    ->references('id')->on('pays');
             });
         }
     }

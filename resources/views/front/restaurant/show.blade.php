@@ -235,15 +235,22 @@
                                 @endforelse
                             </ul>
                         </aside>
-                        <aside class="single_sidebar_widget actions_cloud_widget">
+                        <aside class="single_sidebar_widget tag_cloud_widget">
                             <h4 class="widget_title">Your actions</h4>
-                            <form method="post" action="">
-                                @csrf
-                                @method("DELETE")
-                                <a href="" class="btn btn-primary">Edited</a>
-                                <button type="submit" class="btn btn-danger">Deleted</button>
-                            </form>
-
+                            <div class="row">
+                                <div class="col-6">
+                                    <a href="{{ route('front.restaurant.edit', $restaurant->id) }}"
+                                       class="btn btn-primary btn-sm">Edited</a>
+                                </div>
+                                <div class="col-6">
+                                    <form method="post"
+                                          action="{{ route('front.restaurant.destroy', $restaurant->id) }}">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="btn btn-danger btn-sm">Deleted</button>
+                                    </form>
+                                </div>
+                            </div>
                         </aside>
                     </div>
                 </div>

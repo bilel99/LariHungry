@@ -13,14 +13,12 @@ class CreateCguTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('cgu')) {
-            Schema::create('cgu', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->string('title', 255);
-                $table->longText('content');
-                $table->timestamps();
-            });
-        }
+        Schema::create('cgu', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title', 255);
+            $table->longText('content');
+            $table->timestamps();
+        });
     }
 
     /**
