@@ -50,16 +50,13 @@ class RestaurantsController extends Controller
                     array_push($images, end($item));
                 }
             }
-            $lengthComments = Comment::where('restaurant_id', $row->id)->count();
-            $note = new Note();
-            $avgNotes = $note->calcAverageAllNoteByRestaurant($row->id);
         }
 
         $categories = Categorie::all();
         $pluckCat = $categories->pluck('title', 'id');
 
         return view('front.restaurant.index',
-            compact('restaurants', 'images', 'pluckCat', 'lengthComments', 'avgNotes'));
+            compact('restaurants', 'images', 'pluckCat'));
     }
 
     /**
@@ -193,16 +190,19 @@ class RestaurantsController extends Controller
             ->where('id', $restaurant->id)
             ->first();
 
-        $catgories = Categorie::all();
+        $categories = Categorie::all();
         $tag = Tag::all();
 
-        $pluckCat = $catgories->pluck('title', 'id');
-        $pluckCat->all();
-        $pluckTag = $tag->pluck('tag', 'id');
-        $pluckTag->all();
+        $pluckCat = $categories->pluck('title');
+        $diffCat = $pluckCat->diffKeys($restaurant->categories);
+        $diffCat->all();
+
+        $pluckTag = $tag->pluck('tag');
+        $diffTag = $pluckTag->diffKeys($restaurant->tags);
+        $diffTag->all();
 
         return view('front.restaurant.edit',
-            compact('restaurant', 'pluckCat', 'pluckTag'));
+            compact('restaurant', 'diffCat', 'diffTag'));
     }
 
     /**

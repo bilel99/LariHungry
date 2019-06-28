@@ -36,7 +36,7 @@
                         <small class="text-muted cat">
                             <i class="fas fa-euro-sign"></i> {{ $row->price }} prix moy.
                             <i class="fas fa-grip-lines-vertical"></i>
-                            <i class="fas fa-people-carry"></i> {{ $lengthComments }} avis
+                            <i class="fas fa-people-carry"></i> ??? avis
                         </small>
                         <p class="card-text">{{ mb_strimwidth($row->description, 0, 50, '...') }}</p>
                     </div>
@@ -46,7 +46,7 @@
                             {{ $row->adress }}, {{ $row->ville->libelle }} {{ $row->ville->zipcode }}
                         </div>
                         <div class="stats">
-                            <i class="fas fa-sort-numeric-up"></i> {{ $avgNotes === null ? 'Empty' : $avgNotes.' /5' }}
+                            <i class="fas fa-sort-numeric-up"></i> {{ '???' === null ? 'Empty' : '???'.' /5' }}
                         </div>
                     </div>
                 </div>

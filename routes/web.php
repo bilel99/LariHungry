@@ -22,16 +22,22 @@ Auth::routes();
 /************************************************************************************#
  *  FRONT ROUTE
  ************************************************************************************/
+/**
+ * Route except (login) => Home page contact Faq etc...
+ */
 Route::get('/', 'Front\HomeController@index')->name('front.home');
-Route::middleware(['auth_redirect_to_home'])->namespace('Front')->name('front.')->group(function () {
-    /**
-     * Front - Home Route
-     */
-    Route::get('/contact', 'HomeController@contact')->name('contact');
-    Route::post('/create-contact', 'HomeController@createContact')->name('contact.store');
-    Route::post('/create-faq', 'HomeController@createFaq')->name('faq.store');
-    Route::post('/create-newsletter', 'HomeController@createNewsletter')->name('create.newsletter');
 
+Route::get('/contact', 'Front\HomeController@contact')->name('front.contact');
+Route::post('/create-contact', 'Front\HomeController@createContact')->name('front.contact.store');
+
+Route::post('/create-faq', 'Front\HomeController@createFaq')->name('front.faq.store');
+
+Route::post('/create-newsletter', 'Front\HomeController@createNewsletter')->name('front.create.newsletter');
+
+/**
+ * Route In Log
+ */
+Route::middleware(['auth_redirect_to_home'])->namespace('Front')->name('front.')->group(function () {
     /**
      * Front / User - Route
      */

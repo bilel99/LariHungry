@@ -29,7 +29,8 @@
                     <li class="list-inline-item"><a href=""><i class="fab fa-twitter fa-2x"></i></a></li>
                     <li class="list-inline-item"><a href=""><i class="fab fa-instagram fa-2x"></i></a></li>
                     <li class="list-inline-item"><a href=""><i class="fab fa-google-plus fa-2x"></i></a></li>
-                    <li class="list-inline-item"><a href="" target="_blank"><i class="far fa-envelope fa-2x"></i></a></li>
+                    <li class="list-inline-item"><a href="" target="_blank"><i class="far fa-envelope fa-2x"></i></a>
+                    </li>
                 </ul>
 
                 <h5>Newsletter</h5>
@@ -38,7 +39,12 @@
                     @method('POST')
                     <div class="form-group">
                         <label for="newsletter">click enter for validate</label>
-                        <input type="text" class="form-control" name="newsletter" placeholder="john.doe@domain.com">
+                        <input type="email" class="form-control" name="email" placeholder="john.doe@domain.com"
+                               aria-describedby="email.error">
+                        <small id="email.error"
+                               class="form-text text-danger">
+                            {{ $errors->first('email') }}
+                        </small>
                     </div>
                 </form>
             </div>

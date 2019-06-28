@@ -103,12 +103,12 @@ class HomeController extends Controller
         }
 
         $faq = new Faq();
-        $faq->question = $request->question;
+        $faq->question = $request->get('question');
         $faq->answer = 'Waiting for Answer!';
-        $faq->done = 0;
+        $faq->done = false;
         $faq->save();
         $request->session()->flash('success', 'created Question successfully!');
-        return redirect()->back();
+        return redirect()->route('front.contact');
     }
 
     /**
@@ -117,9 +117,17 @@ class HomeController extends Controller
      */
     public function createNewsletter(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|min:4|max:255|email|unique:newsletters'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         $newsletter = new Newsletters();
-        $newsletter->email = $request->input('newsletter');
-        $newsletter->status = 1;
+        $newsletter->email = $request->get('email');
+        $newsletter->status = true;
         $newsletter->save();
         $request->session()->flash('success', 'Your email is register successfully!');
         return redirect()->back();

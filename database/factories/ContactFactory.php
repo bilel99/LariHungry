@@ -12,7 +12,7 @@ $factory->define(Contact::class, function (Faker $faker) {
         'firstname' => $faker->firstName,
         'email' => $faker->unique()->safeEmail,
         'sujet' => $faker->paragraph,
-        'number_phone' => $faker->phoneNumber,
+        'number_phone' => '0612345678',
         'restaurant' => null,
         'text' => $faker->text,
         'done' => $faker->boolean

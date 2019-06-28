@@ -18,7 +18,7 @@ class CreateContactTable extends Migration
             $table->string('name', 50);
             $table->string('firstname', 50);
             $table->string('email', 255);
-            $table->string('sujet', 255);
+            $table->longText('sujet');
             $table->string('number_phone', 10)->nullable();
             $table->string('restaurant', 255)->nullable();
             $table->longText('text');

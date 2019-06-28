@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Newsletters::class, function (Faker $faker) {
     return [
-        'email' => $faker->unique()->safeEmail,
+        'email' => $faker->unique()->email,
         'status' => $faker->boolean
     ];
 });

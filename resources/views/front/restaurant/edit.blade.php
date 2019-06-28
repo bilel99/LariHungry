@@ -108,7 +108,7 @@
                                         class="form-control"
                                         aria-describedby="restaurant.category restaurant.category.error">
                                     <option value="{{ $restaurant->categories[0]->id }}" selected>{{ $restaurant->categories[0]->title }}</option>
-                                    @foreach($pluckCat as $key => $row)
+                                    @foreach($diffCat as $key => $row)
                                         <option value="{{ $key }}">{{ $row }}</option>
                                     @endforeach
                                 </select>
@@ -132,8 +132,8 @@
                                     @foreach($restaurant->tags as $row)
                                         <option value="{{ $row->id }}" selected>{{ $row->tag }}</option>
                                     @endforeach
-                                    @foreach($pluckTag as $key => $row)
-                                        <option value="{{ $key }}">{{ $row }}</option>
+                                    @foreach($diffTag as $key => $row)
+                                        <option value="{{ $key }}" selected>{{ $row }}</option>
                                     @endforeach
                                 </select>
                                 <small id="restaurant.tag"
