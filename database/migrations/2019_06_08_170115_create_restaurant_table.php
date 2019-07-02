@@ -24,7 +24,8 @@ class CreateRestaurantTable extends Migration
 
             // Foreign - key
             $table->foreign('user_id')
-                ->references('id')->on('user');
+                ->references('id')->on('user')
+                ->onDelete('cascade');
             $table->foreign('ville_id')
                 ->references('id')->on('ville');
 

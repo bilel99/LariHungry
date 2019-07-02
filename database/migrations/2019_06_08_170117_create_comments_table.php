@@ -21,7 +21,8 @@ class CreateCommentsTable extends Migration
 
             // Foreign - key
             $table->foreign('user_id')
-                ->references('id')->on('user');
+                ->references('id')->on('user')
+                ->onDelete('cascade');
             $table->foreign('restaurant_id')
                 ->references('id')->on('restaurant');
 

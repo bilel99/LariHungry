@@ -19,9 +19,11 @@ class CreateRestaurantCategoriesTable extends Migration
 
             // Foreign - key
             $table->foreign('restaurant_id')
-                ->references('id')->on('restaurant');
+                ->references('id')->on('restaurant')
+                ->onDelete('cascade');
             $table->foreign('categories_id')
-                ->references('id')->on('categories');
+                ->references('id')->on('categories')
+                ->onDelete('cascade');
         });
     }
 

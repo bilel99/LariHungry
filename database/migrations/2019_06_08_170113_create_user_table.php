@@ -27,7 +27,8 @@ class CreateUserTable extends Migration
 
             // Foreign - key
             $table->foreign('media_id')
-                ->references('id')->on('media');
+                ->references('id')->on('media')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -74,7 +74,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:4|max:255',
             'firstname' => 'required|min:4|max:255',
-            'email' => 'required|min:7|max:255|email',
+            'email' => 'required|min:7|max:255|email|unique:user,email,' . $user->id,
             'media' => ''
             //mimes:jpeg,png,jpg|size:2048
         ]);
@@ -160,10 +160,12 @@ class UserController extends Controller
      */
     public function destroy(User $user, Request $request)
     {
-        $this->deleteMedia(null, false);
+        if ($user->media_id !== null) {
+            $this->deleteMedia(null, false);
+        }
         $user->delete();
         $request->session()->flash('success', 'Deleted successfully');
-        return redirect()->route('logout');
+        return redirect('login')->with(Auth::logout());
     }
 
 }
