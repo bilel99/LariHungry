@@ -5,22 +5,12 @@ namespace Tests\Unit;
 use App\User;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\Auth;
-use phpDocumentor\Reflection\Types\Integer;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\AuthenticateFakeUserTest;
 
-class ProfilTest extends TestCase
+class ProfilTest extends AuthenticateFakeUserTest
 {
     use RefreshDatabase;
-
-    /**
-     * SetUp method PHPUnit Framework
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->loginWithFakeUser();
-    }
 
     /**
      * @group profil-page
@@ -105,26 +95,4 @@ class ProfilTest extends TestCase
             $this->authGuardToRedirect(1);
         }
     }
-
-    /**
-     * Login with Fake User
-     */
-    private function loginWithFakeUser()
-    {
-        $user = factory(User::class)->create();
-        $this->be($user); // is Authenticated
-        $this->assertAuthenticated();
-    }
-
-    /**
-     * No Authenticated, redirect to login url and return status 302
-     * @param int $id
-     */
-    private function authGuardToRedirect(int $id): void
-    {
-        $response = $this->get('/profil/' . $id);
-        $response->assertStatus(302);
-        $response->assertRedirect('/login');
-    }
-
 }

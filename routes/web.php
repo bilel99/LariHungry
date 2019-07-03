@@ -71,7 +71,6 @@ Route::middleware(['auth_redirect_to_home'])->namespace('Front')->name('front.')
      */
     Route::get('/favorite', 'FavoriteController@index')->name('fav.index');
     Route::delete('/delete-favorite/{fav}', 'FavoriteController@destroy')->name('fav.destroy');
-
 });
 
 /************************************************************************************#
@@ -119,7 +118,4 @@ Route::middleware(['auth'])->namespace('Admin')->prefix('admin')->name('admin.')
      */
     Route::resource('/restaurant', 'RestaurantsController')->middleware('can:authorize');
     Route::get('/restaurant/getVille/{cp}', 'RestaurantsController@getVille')->name('restaurant.getVille')->middleware('can:authorize');
-
 });
-
-

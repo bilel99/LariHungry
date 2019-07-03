@@ -10,15 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 trait UploaderFiles
 {
-    private $mult = array();
-    private $path = array();
-    private $media = array();
+    private $mult = [];
+    private $path = [];
+    private $media = [];
 
     /**
      * @param Request $request
      * @param string $name
      * @param string $directory
-     * @param bool|null $pivot
      * @return bool
      */
     public function uploadedFile(Request $request, string $name = 'restaurant_media', string $directory = 'uploads/restaurants/'): bool
@@ -71,11 +70,10 @@ trait UploaderFiles
                         $restaurant->medias()->detach($row);
                         $restaurant->medias()->attach($row);
                     }
-                } else if ($pivot === false) {
+                } elseif ($pivot === false) {
                     if (Auth::user()->media_id === null ||
                         empty(Auth::user()->media_id) ||
                         Auth::user()->media_id === '') {
-
                         $files = $request->file($name);
                         $fileName = uniqid($files) . '.' . $files->getClientOriginalExtension();
                         $files->move($directory, $fileName);
@@ -122,10 +120,9 @@ trait UploaderFiles
                         $restaurant->medias()->detach($row);
                         $restaurant->medias()->attach($row);
                     }
-                } else if ($pivot === false) {
+                } elseif ($pivot === false) {
                     if (Auth::user()->media_id !== null ||
                         Auth::user()->media_id !== '') {
-
                         $media = Media::get();
                         // Deleted file
                         foreach ($media as $row) {
@@ -163,8 +160,7 @@ trait UploaderFiles
      * @param Restaurant $restaurant
      * @param bool|null $pivot
      */
-    public
-    function deleteMedia(Restaurant $restaurant, ?bool $pivot = true): void
+    public function deleteMedia(Restaurant $restaurant, ?bool $pivot = true): void
     {
         $media = Media::with('restaurants')->get();
         if ($pivot === true) {
@@ -214,5 +210,4 @@ trait UploaderFiles
             }
         }
     }
-
 }
