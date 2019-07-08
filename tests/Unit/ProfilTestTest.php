@@ -12,6 +12,12 @@ class ProfilTest extends AuthenticateFakeUserTest
 {
     use RefreshDatabase;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->loginWithFakeUser();
+    }
+
     /**
      * @group profil-page
      * @test

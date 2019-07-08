@@ -37,7 +37,6 @@ class ContactTest extends TestCase
         $response = $this->post('/create-contact', $attributes);
         $contact = Contact::count();
         $this->assertEquals(1, $contact);
-        $response->assertRedirect(route('front.contact'));
     }
 
     /**

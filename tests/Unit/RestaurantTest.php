@@ -2,19 +2,16 @@
 
 namespace Tests\Unit;
 
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\AuthenticateFakeUserTest;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class RestaurantTest extends TestCase
+class RestaurantTest extends AuthenticateFakeUserTest
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->assertTrue(true);
-    }
+    use RefreshDatabase;
+    use WithoutMiddleware;
+
+    
 }
